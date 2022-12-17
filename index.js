@@ -18,7 +18,10 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", index);
+app.get("/", (req,res, next)=>{
+    res.status(200).json({code: 1, message: "Bienvenido a la BD de Empleados"});
+    res.send("Hola");
+});
 
 app.use("/user", user);
 app.use(auth);

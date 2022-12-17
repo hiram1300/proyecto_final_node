@@ -1,9 +1,9 @@
 const express = require('express');
-const employees = express.Router();
+const employeeR = express.Router();
 const db = require('../config/database');
 
 
-employees.post("/buscar", async (req, res, next) => {
+employeeR.post("/buscar", async (req, res, next) => {
     const { employee_id, first_name } = req.body;
     console.log("asd")
     if (first_name) {
@@ -19,12 +19,12 @@ employees.post("/buscar", async (req, res, next) => {
     return res.status(404).send({ code: 404, message: "Id & first_name vacio" });
 });
 
-employees.post("/", async (req, res, next) => {
-    const { first_name, last_name, email, password, phone, adress } = req.body;
+employeeR.post("/", async (req, res, next) => {
+    const { first_name, last_name, phone, email, password} = req.body;
 
-    if (first_name && last_name && email && password && phone && adress) {
-        let query = "INSERT INTO employee(first_name, last_name, email, password, phone, adress)";
-        query += `VALUES('${first_name}', '${last_name}', '${email}', '${password}', ${phone}, '${adress}')`;
+    if (first_name && last_name && phone && email && password ) {
+        let query = "INSERT INTO employee(first_name, last_name, email, password, phone)";
+        query += `VALUES('${first_name}', '${last_name}', ${phone}, '${email}', '${password}')`;
 
         const rows = await db.query(query);
 
@@ -36,7 +36,7 @@ employees.post("/", async (req, res, next) => {
     return res.status(500).json({ code: 500, message: "Campos incompletos!" })
 });
 
-employees.delete("/", async (req, res, next) => {
+employeeR.delete("/", async (req, res, next) => {
     const { employee_id, first_name } = req.body;
     if (first_name) {
         const query = `DELETE FROM employee WHERE first_name = '${first_name}'`;
@@ -60,13 +60,13 @@ employees.delete("/", async (req, res, next) => {
     return res.status(404).json({ code: 404, message: "id y first_name vacios" });
 });
 
-employees.put("/:name([A-Za-z]+)", async (req, res, next) => {
-    const { first_name, last_name, email, password, phone, adress } = req.body;
+employeeR.put("/:name([A-Za-z]+)", async (req, res, next) => {
+    const { first_name, last_name, phone, email, password} = req.body;
 
     let query = `UPDATE employee SET last_name='${last_name}'`;
-    query += `, email='${email}', password= '${password}', phone = ${phone}, adress = '${adress}' WHERE first_name = '${first_name}';`;
+    query += `, email='${email}', password= '${password}', phone = ${phone}' WHERE first_name = '${first_name}';`;
 
-    if (first_name && last_name && email && password && phone && adress) {
+    if (first_name && last_name && phone && email && password) {
         const rows = await db.query(query);
 
         if (rows.affectedRows == 1) 
@@ -78,4 +78,4 @@ employees.put("/:name([A-Za-z]+)", async (req, res, next) => {
     return res.status(500).json({ code: 500, message: "Campos incompletos, no es posible actualizar" })
 });
 
-module.exports = employees;
+module.exports = employeeR;

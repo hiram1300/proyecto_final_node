@@ -70,10 +70,9 @@ function add_user() {
         data: {
             first_name: nombrelocal,
             last_name: apellidoslocal,
+            phone: telefonolocal,
             email: correolocal,
             password: passwordlocal,
-            phone: telefonolocal,
-            adress: direccionlocal
         }
     }).then(function (res) {
         console.log(res.data);
