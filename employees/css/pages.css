@@ -1,0 +1,108 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+	font-size: 10px;
+
+	--heading-height: 30em;
+}
+
+body {
+	font-family: "Roboto", Arial, sans-serif;
+	min-height: 100vh;
+	background-color: #101010;
+}
+
+header{
+	background: #130f40;
+	width: 100%;
+	height: 60px;
+	position: relative;
+	float: left;
+	line-height: 60px;
+	text-align: center;
+	padding-right: 20px;
+	box-sizing: border-box;
+	color: white;
+	font-size: 30px;
+	font-family: Century Gothic;
+}
+nav{
+	position: absolute;
+	background-color: #30336b;
+	width: 100%;
+	height: 100%;
+	top:60px;
+    text-decoration: none;
+}
+#div1{
+	position: relative;
+	width: 20%;
+	height: 500px;
+	top: 100px;
+	left: 40%;
+}
+
+.seccion{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: #130f40;
+    color: #ffffff;
+    box-sizing: border-box;
+    font-size: 25px;
+    border-color: #010005;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+    float: left;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+    transition: .2s all;
+    box-sizing: border-box;
+    text-align: center;
+}
+.title{
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    float: left;
+    background-color: #6ab04c;
+}
+.tex{
+    text-align: left;
+}
+input{
+    width: 80%;
+    font-size: 25px;
+}
+.btn_add{
+    width: 80%;
+    height: 30px;
+    color: #fff;
+    background-color: #071735;
+    cursor: pointer;
+}
+.btn_update{
+    width: 80%;
+    height: 30px;
+    color: #fff;
+    background-color: #071735;
+    cursor: pointer;
+}
+.btn_search{
+    width: 80%;
+    height: 30px;
+    color: #fff;
+    background-color: #071735;
+    cursor: pointer;
+}
+.btn_delete{
+    width: 80%;
+    height: 30px;
+    color: #fff;
+    background-color: #9b1813;
+    cursor: pointer;
+}
